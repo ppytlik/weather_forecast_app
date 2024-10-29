@@ -35,7 +35,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    implementation(files("libs/Shared-debug.aar"))
+    debugImplementation(files("libs/Shared-debug.aar"))
+    releaseImplementation(files("libs/Shared-release.aar"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
