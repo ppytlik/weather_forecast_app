@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.interview.weatherforecast.feature.location"
+    namespace = "com.interview.weatherforecast.core.location"
     compileSdk = 34
 
     defaultConfig {
@@ -30,7 +30,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core_location"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
