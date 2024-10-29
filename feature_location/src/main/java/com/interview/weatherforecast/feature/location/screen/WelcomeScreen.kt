@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.interview.weatherforecast.core_navigation.Screen
-import com.interview.weatherforecast.feature.location.viewmodel.WelcomeScreenViewModel
+import com.interview.weatherforecast.feature.location.viewmodel.WelcomeViewModel
 import org.koin.androidx.compose.koinViewModel
 
 class WelcomeScreen() : Screen() {
@@ -18,14 +18,14 @@ class WelcomeScreen() : Screen() {
     @Composable
     override fun Content() {
 
-        val viewModel: WelcomeScreenViewModel = koinViewModel<WelcomeScreenViewModel>()
+        val viewModel: WelcomeViewModel = koinViewModel<WelcomeViewModel>()
 
         MainContent(viewModel)
     }
 }
 
 @Composable
-private fun MainContent(viewModel: WelcomeScreenViewModel) {
+private fun MainContent(viewModel: WelcomeViewModel) {
     Column(modifier = Modifier.fillMaxSize().background(color = Color.Cyan)) {
 
         Text("Welcome to the weather app!")

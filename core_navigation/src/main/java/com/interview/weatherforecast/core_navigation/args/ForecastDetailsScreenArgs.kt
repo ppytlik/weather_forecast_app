@@ -1,7 +1,20 @@
 package com.interview.weatherforecast.core_navigation.args
 
-import com.interview.wheatherforecast.lib.domain.model.ForecastData
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ForecastDetailsScreenArgs(
-        private val forecastData: ForecastData
-)
+        val title: String? = null,
+        val highestValue: String? = null,
+        val lowestValue: String? = null,
+        val generalConditions: String? = null,
+        val averageHumidity: Float? = null,
+        val averageProbabilityOfRain: Float? = null,
+        val maximumUVIndex: Int? = null,
+        val maximumWindSpeed: Int? = null,
+        val averageVisibility: Int? = null,
+        val averageAirPressure: Int? = null,
+        val locationName: String? = null,
+        val sunriseTime: String? = null,
+        val sunsetTime: String? = null
+) : ScreenArgs

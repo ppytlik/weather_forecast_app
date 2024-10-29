@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
                 composable(route = Destination.EnterLocation.route) {
                     EnterLocationScreen().Content()
                 }
-                composable(route = Destination.ForecastList.route) {
+                composable(route = Destination.ForecastList.getParametrizedRoute()) {
                     ForecastListScreen().Content()
                 }
-                composable(route = Destination.ForecastDetails.route) {
+                composable(route = Destination.ForecastDetails.getParametrizedRoute()) {
                     ForecastDetailsScreen().Content()
                 }
             }

@@ -4,6 +4,10 @@ sealed class Destination(val route: String) {
     data object Welcome : Destination("welcome")
     data object AskForLocation : Destination("ask_for_location")
     data object EnterLocation : Destination("enter_location")
-    data object ForecastList : Destination("forecast_list")
-    data object ForecastDetails : Destination("forecast_details")
+    data object ForecastList : Destination("forecast_list") {
+        fun getParametrizedRoute() = "$route/{ForecastListScreenArgs}"
+    }
+    data object ForecastDetails : Destination("forecast_details") {
+        fun getParametrizedRoute() = "$route/{ForecastDetailsScreenArgs}"
+    }
 }
