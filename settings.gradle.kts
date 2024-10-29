@@ -23,3 +23,4 @@ rootProject.name = "Weather Forecast"
 include(":app")
 include(":forecast_core")
 include(":feature_location")
+include(":feature_forecast")
