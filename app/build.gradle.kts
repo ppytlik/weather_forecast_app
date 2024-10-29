@@ -48,10 +48,14 @@ dependencies {
     implementation(project(":feature_location"))
     implementation(project(":feature_forecast"))
 
+    implementation(project(":core_navigation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.compose.navigation)
+
+    implementation(libs.koin)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

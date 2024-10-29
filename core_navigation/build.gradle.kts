@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.interview.weatherforecast.feature.forecast"
+    namespace = "com.interview.weatherforecast.core_navigation"
     compileSdk = 34
 
     defaultConfig {
@@ -21,22 +21,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 
 dependencies {
-    implementation(project(":core_forecast"))
-    implementation(project(":core_navigation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

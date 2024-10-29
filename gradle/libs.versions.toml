@@ -15,6 +15,7 @@ coroutines = "1.9.0"
 datetime = "0.6.1"
 ktor = "2.3.12"
 datastore-preferences-core = "1.1.1"
+koin_version = "4.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,8 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
+
+koin = {group = "io.insert-koin", name = "koin-android", version.ref = "koin_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
