@@ -9,5 +9,7 @@ class ModuleNavigator(
 ) {
     fun openForecastDetailsScreen(args: ForecastDetailsScreenArgs) = appNavigator.openScreen(Destination.ForecastDetails, args)
 
+    fun getNavigationArguments() = appNavigator.getArguments()
+
     fun back() = appNavigator.back()
 }

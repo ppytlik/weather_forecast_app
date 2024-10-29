@@ -1,5 +1,6 @@
 package com.interview.weatherforecast.navigation
 
+import android.os.Bundle
 import androidx.navigation.NavController
 import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
@@ -25,6 +26,10 @@ class AppNavigatorImpl : AppNavigator {
 
     override fun setController(navController: NavController) {
         this.navController = navController
+    }
+
+    override fun getArguments(): Bundle? {
+        return navController?.currentBackStackEntry?.arguments
     }
 
     override fun clear() {

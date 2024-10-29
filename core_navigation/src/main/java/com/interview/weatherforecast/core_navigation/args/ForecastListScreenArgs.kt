@@ -4,7 +4,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ForecastListScreenArgs(
-        private val locationName: String? = null,
-        private val latitude: Float? = null,
-        private val longitude: Float? = null
+        val locationName: String? = null,
+        val latitude: Float? = null,
+        val longitude: Float? = null
 ) : ScreenArgs
