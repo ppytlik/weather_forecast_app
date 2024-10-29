@@ -1,1 +1,7 @@
 /.gradle
+/.gradle/8.9/
+/.gradle/buildOutputCleanup/
+/.gradle/kotlin/
+/.gradle/vcs-1/
+/.gradle/config.properties
+/.gradle/file-system.probe
