@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -12,6 +15,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val apikeyPropertiesFile = project.file("apikey.properties")
+        val apikeyProperties = Properties()
+        apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
+        buildConfigField("String", "WEATHER_API_KEY", apikeyProperties["API_KEY"].toString())
     }
 
     buildTypes {
@@ -26,6 +34,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
