@@ -45,7 +45,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":forecast_core"))
+    implementation(project(":feature_location"))
+    implementation(project(":feature_forecast"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

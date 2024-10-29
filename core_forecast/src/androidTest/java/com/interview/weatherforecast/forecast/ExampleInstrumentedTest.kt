@@ -1,4 +1,4 @@
-package com.interview.weatherforecast.forecastcore
+package com.interview.weatherforecast.forecast
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
