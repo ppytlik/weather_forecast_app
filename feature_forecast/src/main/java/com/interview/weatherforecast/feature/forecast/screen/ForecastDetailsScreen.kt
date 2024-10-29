@@ -1,12 +1,12 @@
-package com.interview.weatherforecast.feature.location.screen
+package com.interview.weatherforecast.feature.forecast.screen
 
 import androidx.compose.runtime.Composable
 import com.interview.weatherforecast.core_navigation.Screen
 
-class EnterLocationScreen : Screen() {
+class ForecastDetailsScreen : Screen() {
 
     @Composable
     override fun Content() {
-        TODO("Not yet implemented")
+
     }
 }

@@ -33,10 +33,13 @@ dependencies {
     implementation(project(":core_forecast"))
     implementation(project(":core_navigation"))
 
+    implementation(project(":lib_domain"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    
+    implementation(libs.androidx.compose.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
