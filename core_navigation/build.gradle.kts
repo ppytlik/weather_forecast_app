@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.navigation)
 
     implementation(project(":lib_domain"))
 

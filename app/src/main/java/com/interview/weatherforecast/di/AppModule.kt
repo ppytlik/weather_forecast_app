@@ -7,4 +7,5 @@ import org.koin.dsl.module
 
 val appModule = module {
     singleOf<AppNavigator>(::AppNavigatorImpl)
+    singleOf(::AppNavigatorImpl)
 }

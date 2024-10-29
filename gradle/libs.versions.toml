@@ -26,8 +26,13 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences-core" }
-androidx-compose-navigation = { group = "androidx.navigation", name ="navigation-compose", version.ref = "nav_version" }
-androidx-compose-ui = {group="androidx.compose.ui", name = "ui", version.ref = "compose_version"}
+androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui-android", version.ref = "compose_version" }
+androidx-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose_version" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "compose_version" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "compose_version" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation-android", version.ref = "compose_version" }
+androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose_version" }
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
@@ -38,7 +43,8 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 
-koin = {group = "io.insert-koin", name = "koin-android", version.ref = "koin_version" }
+koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin_version" }
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

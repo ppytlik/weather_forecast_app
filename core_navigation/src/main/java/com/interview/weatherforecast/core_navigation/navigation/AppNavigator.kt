@@ -1,9 +1,12 @@
 package com.interview.weatherforecast.core_navigation.navigation
 
-import com.interview.weatherforecast.core_navigation.args.ForecastScreenArgs
+import androidx.navigation.NavController
+import com.interview.weatherforecast.core_navigation.destination.Destination
 
 interface AppNavigator {
-    fun openForecastScreen(args: ForecastScreenArgs)
+    fun openScreen(destination: Destination)
 
     fun back()
+
+    fun setController(navController: NavController)
 }
