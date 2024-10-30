@@ -13,6 +13,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -52,7 +53,7 @@ class AskForLocationScreen : Screen() {
             SubHeader(stringResource(R.string.your_phone_must_also_support_this))
             VerticalSpacer()
 
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Label(stringResource(R.string.location_service))
                 Button(
                         onClick = {},
@@ -67,7 +68,7 @@ class AskForLocationScreen : Screen() {
                 }
             }
             VerticalSpacer()
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Label(stringResource(R.string.location_permission))
                 Button(
                         onClick = {},

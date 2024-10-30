@@ -1,5 +1,6 @@
 package com.interview.weatherforecast.feature.forecast.screen.list
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -16,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -68,6 +70,12 @@ private fun MainContent(
             Label("Location")
             Button(
                 onClick = onLocationClick,
+                    border = BorderStroke(width = 1.dp, color = ColorPalette.buttonStroke),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                            backgroundColor = ColorPalette.buttonFillSecondary,
+                            contentColor = ColorPalette.buttonTextSecondary
+                    ),
                 content = { Text(forecastListState.locationName) }
             )
         }
