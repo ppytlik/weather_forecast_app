@@ -2,7 +2,6 @@ package com.interview.weatherforecast.feature.forecast.screen.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.feature.forecast.ModuleNavigator
 import com.interview.weatherforecast.feature.forecast.domain.usecase.AvailableForecast
@@ -27,13 +26,12 @@ class ForecastListViewModel(
 
     fun onLocationButtonClick() = moduleNavigator.back()
 
-    fun onForecastItemClick() = moduleNavigator.openForecastDetailsScreen(ForecastDetailsScreenArgs())
+    fun onForecastItemClick(item:AvailableForecast) = item.forecastDetailsScreenArgs?.let { moduleNavigator.openForecastDetailsScreen(it) }
 
     fun loadData(args: ForecastListScreenArgs) {
         this.args = args
         viewModelScope.launch(Dispatchers.IO) {
-            val args = moduleNavigator.getNavigationArguments()?.getParcelable("ForecastListScreenArgs", ForecastListScreenArgs::class.java)
-            val locationName = args?.locationName
+            val locationName = args.locationName
 
             val (items, errorText) = when (val listResult = getAvailableForecastList()) {
                 is AvailableForecastListResult.Success -> listResult.data to null

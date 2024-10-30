@@ -4,17 +4,16 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ForecastDetailsScreenArgs(
-        val title: String? = null,
-        val highestValue: String? = null,
-        val lowestValue: String? = null,
-        val generalConditions: String? = null,
-        val averageHumidity: Float? = null,
-        val averageProbabilityOfRain: Float? = null,
-        val maximumUVIndex: Int? = null,
-        val maximumWindSpeed: Int? = null,
-        val averageVisibility: Int? = null,
-        val averageAirPressure: Int? = null,
-        val locationName: String? = null,
-        val sunriseTime: String? = null,
-        val sunsetTime: String? = null
+        val title: String,
+        val temperatureHigh: Double?,
+        val temperatureLow: Double?,
+        val weatherCondition: String?,
+        val humidity: Double?,
+        val rainProbability: Double?,
+        val uvIndex: Int?,
+        val windSpeed: Double?,
+        val visibility: Double?,
+        val pressure: Double?,
+        val sunrise: String,
+        val sunset: String
 )

@@ -31,41 +31,41 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val navController = rememberNavController()
 
-            DisposableEffect(key1 = navController) {
-                appNavigator.setController(navController)
-                onDispose { }
-            }
+                DisposableEffect(key1 = navController) {
+                    appNavigator.setController(navController)
+                    onDispose { }
+                }
 
-            NavHost(
+                NavHost(
                     navController = navController,
                     startDestination = Destination.Welcome
-            ) {
-                composable<Destination.Welcome> {
-                    WelcomeScreen().Content()
-                }
-                composable<Destination.AskForLocation> {
-                    AskForLocationScreen().Content()
-                }
-                composable<Destination.EnterLocation> {
-                    EnterLocationScreen().Content()
-                }
-                composable<Destination.ForecastList>(
-                        typeMap = mapOf(
-                                typeOf<ForecastListScreenArgs>() to CustomNavType.ForecastListArgs
-                        )
                 ) {
-                    val args = runCatching { it.toRoute<Destination.ForecastList>().args }.getOrNull()
-                    args?.let { ForecastListScreen(args).Content() }
-                }
-                composable<Destination.ForecastDetails>(
+                    composable<Destination.Welcome> {
+                        WelcomeScreen().Content()
+                    }
+                    composable<Destination.AskForLocation> {
+                        AskForLocationScreen().Content()
+                    }
+                    composable<Destination.EnterLocation> {
+                        EnterLocationScreen().Content()
+                    }
+                    composable<Destination.ForecastList>(
                         typeMap = mapOf(
-                                typeOf<ForecastDetailsScreenArgs>() to CustomNavType.ForecastDetailsArgs
+                            typeOf<ForecastListScreenArgs>() to CustomNavType.ForecastListArgs
                         )
-                ) {
-                    val args = runCatching { it.toRoute<Destination.ForecastDetails>().args }.getOrNull()
-                    args?.let { ForecastDetailsScreen(args).Content() }
+                    ) {
+                        val args = runCatching { it.toRoute<Destination.ForecastList>().args }.getOrNull()
+                        args?.let { ForecastListScreen(args).Content() }
+                    }
+                    composable<Destination.ForecastDetails>(
+                        typeMap = mapOf(
+                            typeOf<ForecastDetailsScreenArgs>() to CustomNavType.ForecastDetailsArgs
+                        )
+                    ) {
+                        val args = runCatching { it.toRoute<Destination.ForecastDetails>().args }.getOrNull()
+                        args?.let { ForecastDetailsScreen(args).Content() }
+                    }
                 }
             }
         }
-    }
 }

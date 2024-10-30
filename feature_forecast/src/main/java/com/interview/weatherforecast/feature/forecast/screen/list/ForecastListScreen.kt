@@ -41,7 +41,7 @@ class ForecastListScreen(private val args: ForecastListScreenArgs) : Screen() {
         val state = viewModel.getScreenStateFlow().collectAsState()
         MainContent(
             onLocationClick = { viewModel.onLocationButtonClick() },
-            onItemClicked = { viewModel.onForecastItemClick() },
+            onItemClicked = { item: AvailableForecast -> viewModel.onForecastItemClick(item) },
             forecastListState = state.value
         )
     }
@@ -50,7 +50,7 @@ class ForecastListScreen(private val args: ForecastListScreenArgs) : Screen() {
 @Composable
 private fun MainContent(
     onLocationClick: () -> Unit,
-    onItemClicked: () -> Unit,
+    onItemClicked: (AvailableForecast) -> Unit,
     forecastListState: ForecastListState
 ) {
     Column(
@@ -100,13 +100,15 @@ private fun MainContent(
 }
 
 @Composable
-private fun ForecastListItem(item: AvailableForecast, onItemClicked: () -> Unit) {
+private fun ForecastListItem(item: AvailableForecast, onItemClicked: (AvailableForecast) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
             .background(color = Color(0xFF2C2C2C), shape = RoundedCornerShape(8.dp))
-            .clickable(onClick = onItemClicked)
+            .clickable(onClick = {
+                onItemClicked(item)
+            })
             .padding(vertical = 4.dp, horizontal = 12.dp)
     ) {
         Column(
@@ -136,7 +138,7 @@ private fun ScreenPreview() {
         MainContent(
             onLocationClick = {},
             onItemClicked = {},
-            forecastListState = ForecastListState("test", errorText = "Błąd")
+            forecastListState = ForecastListState("test", errorText = "Error")
         )
     }
 }
@@ -146,7 +148,7 @@ private fun ScreenPreview() {
 private fun ListPreview() {
     MaterialTheme {
         val messages = (0..10).map {
-            AvailableForecast("Test", "Test")
+            AvailableForecast("Test", "Test", null)
         }
         LazyColumn(
             modifier = Modifier.fillMaxHeight(),

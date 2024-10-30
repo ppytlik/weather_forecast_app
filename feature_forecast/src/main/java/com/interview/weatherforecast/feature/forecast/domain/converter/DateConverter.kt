@@ -1,9 +1,10 @@
 package com.interview.weatherforecast.feature.forecast.domain.converter
 
-import java.util.Locale
 import java.time.Instant
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 //Should based on kotlinx.datetime
 class DateConverter(private val textLocator: TextLocator) {
@@ -25,7 +26,18 @@ class DateConverter(private val textLocator: TextLocator) {
         else -> date.dayOfWeek.name.lowercase().replaceFirstChar { it.uppercase() }
     }
 
-    fun formatFullDate(instant: Instant) = instant.atZone(ZoneId.systemDefault()).format(formatter)
+    fun formatFullDate(instant: Instant): String = instant.atZone(ZoneId.systemDefault()).format(formatter)
+
+    fun convertTimeToLocale(instant: Instant?, locale: Locale): String {
+        if (instant == null) return "NaN"
+
+        val zonedDateTime = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault())
+        return when (locale) {
+            Locale.GERMANY -> DateTimeFormatter.ofPattern("HH:mm 'Uhr'", Locale.GERMANY).format(zonedDateTime)
+            Locale.US -> DateTimeFormatter.ofPattern("hh:mm a", Locale.US).format(zonedDateTime)
+            else -> DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault()).format(zonedDateTime)
+        }
+    }
 }
 
 interface TextLocator {
