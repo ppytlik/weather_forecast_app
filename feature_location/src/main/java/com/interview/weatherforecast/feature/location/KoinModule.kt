@@ -1,5 +1,6 @@
 package com.interview.weatherforecast.feature.location
 
+import com.interview.weatherforecast.feature.location.viewmodel.AskForLocationViewModel
 import com.interview.weatherforecast.feature.location.viewmodel.EnterLocationViewModel
 import com.interview.weatherforecast.feature.location.viewmodel.WelcomeViewModel
 import org.koin.core.module.dsl.singleOf
@@ -10,5 +11,6 @@ import org.koin.dsl.module
 val featureLocationModule = module {
     viewModelOf(::WelcomeViewModel)
     viewModelOf(::EnterLocationViewModel)
+    viewModelOf(::AskForLocationViewModel)
     singleOf(::ModuleNavigator)
 }

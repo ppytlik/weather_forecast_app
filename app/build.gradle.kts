@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":feature_forecast"))
 
     implementation(project(":core_navigation"))
+    implementation(project(":core_location"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

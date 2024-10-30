@@ -17,9 +17,11 @@ ktor = "2.3.12"
 datastore-preferences-core = "1.1.1"
 koin-bom = "4.0.0"
 compose_version = "1.7.0"
+gms_location_version = "21.0.1"
 uiTooling = "1.7.4"
 
 [libraries]
+android-gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "gms_location_version" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
