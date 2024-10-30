@@ -49,7 +49,6 @@ class AskForLocationScreen : Screen() {
             SubHeader(stringResource(R.string.grant_location_authorisations))
             VerticalSpacer()
             SubHeader(stringResource(R.string.to_be_able_to_access_your_location_the_app_requires_authorisation_to_do_so))
-            VerticalSpacer()
             SubHeader(stringResource(R.string.your_phone_must_also_support_this))
             VerticalSpacer()
 

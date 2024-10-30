@@ -16,7 +16,7 @@ class LocationServiceManager {
     fun getLocationFromCityName(context: Context, cityName: String): LatLong? {
         val coder = Geocoder(context)
         val address: List<Address>?
-        var p1: LatLong? = null
+        var latLong: LatLong? = null
 
         try {
             address = coder.getFromLocationName(cityName, 5)
@@ -24,11 +24,11 @@ class LocationServiceManager {
                 return null
             }
             val location = address[0]
-            p1 = LatLong(location.latitude.toFloat(), location.longitude.toFloat())
+            latLong = LatLong(location.latitude.toFloat(), location.longitude.toFloat())
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return p1
+        return latLong
     }
 
     @SuppressLint("MissingPermission")

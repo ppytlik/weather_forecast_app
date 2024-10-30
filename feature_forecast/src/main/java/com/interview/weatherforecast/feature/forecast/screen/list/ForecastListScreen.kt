@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import com.interview.weatherforecast.core_navigation.Screen
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.feature.forecast.domain.usecase.AvailableForecast
+import com.interview.weatherforecast.feature.forecast.screen.component.Header
+import com.interview.weatherforecast.feature.forecast.screen.component.Label
 import com.interview.weatherforecast.lib.compose.ColorPalette
 import org.koin.androidx.compose.koinViewModel
 
@@ -60,9 +62,10 @@ private fun MainContent(
             .background(ColorPalette.background)
             .padding(horizontal = 12.dp)
     ) {
-        Text("Search your location")
+        Header("Search your location")
+        Spacer(modifier = Modifier.height(16.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text("Location")
+            Label("Location")
             Button(
                 onClick = onLocationClick,
                 content = { Text(forecastListState.locationName) }

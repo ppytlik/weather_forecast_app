@@ -3,6 +3,7 @@ package com.interview.weatherforecast.feature.location.viewmodel
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interview.weatherforecast.core.location.permission.LocationPermissionManager
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+private const val TAG = "AskForLocationViewModel"
 private const val PERMISSION_REQUEST_CODE = 0x1234
 private val permissions = listOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION).toTypedArray()
 
@@ -32,15 +34,19 @@ class AskForLocationViewModel(
 
     fun onDoneClick(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val location = locationServiceManager.getCurrentLocation(context = context)
-            withContext(Dispatchers.Main) {
-                moduleNavigator.openForecastScreen(
-                        ForecastListScreenArgs(
-                                locationName = location.name,
-                                latitude = location.latitude,
-                                longitude = location.longitude
-                        )
-                )
+            runCatching {
+                val location = locationServiceManager.getCurrentLocation(context = context)
+                withContext(Dispatchers.Main) {
+                    moduleNavigator.openForecastScreen(
+                            ForecastListScreenArgs(
+                                    locationName = location.name,
+                                    latitude = location.latitude,
+                                    longitude = location.longitude
+                            )
+                    )
+                }
+            }.onFailure {
+                Log.e(TAG,"Failed to request location.")
             }
         }
     }
