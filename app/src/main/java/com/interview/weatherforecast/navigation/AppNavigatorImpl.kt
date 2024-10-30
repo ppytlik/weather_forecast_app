@@ -2,9 +2,6 @@ package com.interview.weatherforecast.navigation
 
 import android.os.Bundle
 import androidx.navigation.NavController
-import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
-import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
-import com.interview.weatherforecast.core_navigation.args.ScreenArgs
 import com.interview.weatherforecast.core_navigation.destination.Destination
 import com.interview.weatherforecast.core_navigation.navigation.AppNavigator
 
@@ -13,11 +10,7 @@ class AppNavigatorImpl : AppNavigator {
     private var navController: NavController? = null
 
     override fun openScreen(destination: Destination) {
-        navController?.navigate(destination.route)
-    }
-
-    override fun openScreen(destination: Destination, screenArgs: ScreenArgs) {
-        navController?.navigate(destination.createRoute(screenArgs))
+        navController?.navigate(destination)
     }
 
     override fun back() {
@@ -34,15 +27,5 @@ class AppNavigatorImpl : AppNavigator {
 
     override fun clear() {
         navController = null
-    }
-
-    private fun Destination.createRoute(screenArgs: ScreenArgs) = when (this) {
-        is Destination.ForecastList -> {
-            "${route}/${screenArgs as ForecastListScreenArgs}"
-        }
-        is Destination.ForecastDetails -> {
-            "${route}/${screenArgs as ForecastDetailsScreenArgs}"
-        }
-        else -> route
     }
 }

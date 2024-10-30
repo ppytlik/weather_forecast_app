@@ -1,10 +1,10 @@
 package com.interview.weatherforecast.core_navigation.args
 
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class ForecastListScreenArgs(
         val locationName: String? = null,
         val latitude: Float? = null,
         val longitude: Float? = null
-) : ScreenArgs
+)

@@ -12,18 +12,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.interview.weatherforecast.core_navigation.Screen
+import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.feature.forecast.state.ForecastListState
 import com.interview.weatherforecast.feature.forecast.viewmodel.ForecastListViewModel
 import org.koin.androidx.compose.koinViewModel
 
-class ForecastListScreen : Screen() {
+class ForecastListScreen(val args: ForecastListScreenArgs) : Screen() {
 
     @Composable
     override fun Content() {
         val viewModel: ForecastListViewModel = koinViewModel()
+        viewModel.loadData(args = args)
 
         val state = viewModel.getScreenStateFlow().collectAsState()
-
         MainContent(viewModel, state.value)
     }
 }

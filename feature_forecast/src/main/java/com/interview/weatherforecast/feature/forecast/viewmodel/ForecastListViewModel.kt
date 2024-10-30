@@ -18,9 +18,7 @@ class ForecastListViewModel(
 
     private val stateFlow: MutableStateFlow<ForecastListState> = MutableStateFlow(ForecastListState(locationName = ""))
 
-    init {
-        loadData()
-    }
+    var args: ForecastListScreenArgs? = null
 
     fun getScreenStateFlow(): StateFlow<ForecastListState> = stateFlow
 
@@ -28,11 +26,10 @@ class ForecastListViewModel(
 
     fun onForecastItemClick() = moduleNavigator.openForecastDetailsScreen(ForecastDetailsScreenArgs())
 
-    private fun loadData() {
+    fun loadData(args: ForecastListScreenArgs) {
+        this.args = args
         viewModelScope.launch(Dispatchers.IO) {
-            val args = moduleNavigator.getNavigationArguments()?.getParcelable("ForecastListScreenArgs", ForecastListScreenArgs::class.java)
-
-            args?.locationName?.let { locationName ->
+            args.locationName?.let { locationName ->
                 stateFlow.update { stateFlow.value.copy(locationName = locationName) }
             }
         }

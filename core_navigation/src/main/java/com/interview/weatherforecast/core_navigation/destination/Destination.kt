@@ -1,13 +1,23 @@
 package com.interview.weatherforecast.core_navigation.destination
 
-sealed class Destination(val route: String) {
-    data object Welcome : Destination("welcome")
-    data object AskForLocation : Destination("ask_for_location")
-    data object EnterLocation : Destination("enter_location")
-    data object ForecastList : Destination("forecast_list") {
-        fun getParametrizedRoute() = "$route/{ForecastListScreenArgs}"
-    }
-    data object ForecastDetails : Destination("forecast_details") {
-        fun getParametrizedRoute() = "$route/{ForecastDetailsScreenArgs}"
-    }
+import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
+import kotlinx.serialization.Serializable
+
+@Serializable
+sealed class Destination() {
+
+    @Serializable
+    data object Welcome : Destination()
+
+    @Serializable
+    data object AskForLocation : Destination()
+
+    @Serializable
+    data object EnterLocation : Destination()
+
+    @Serializable
+    data class ForecastList(val args: ForecastListScreenArgs) : Destination()
+
+    @Serializable
+    data object ForecastDetails : Destination()
 }

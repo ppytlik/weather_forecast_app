@@ -7,14 +7,18 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.core_navigation.destination.Destination
 import com.interview.weatherforecast.core_navigation.navigation.AppNavigator
+import com.interview.weatherforecast.core_navigation.navigation.CustomNavType
 import com.interview.weatherforecast.feature.forecast.screen.ForecastDetailsScreen
 import com.interview.weatherforecast.feature.forecast.screen.ForecastListScreen
 import com.interview.weatherforecast.feature.location.screen.AskForLocationScreen
 import com.interview.weatherforecast.feature.location.screen.EnterLocationScreen
 import com.interview.weatherforecast.feature.location.screen.WelcomeScreen
 import org.koin.core.context.GlobalContext
+import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,21 +37,26 @@ class MainActivity : AppCompatActivity() {
 
             NavHost(
                     navController = navController,
-                    startDestination = Destination.Welcome.route
+                    startDestination = Destination.Welcome
             ) {
-                composable(route = Destination.Welcome.route) {
+                composable<Destination.Welcome> {
                     WelcomeScreen().Content()
                 }
-                composable(route = Destination.AskForLocation.route) {
+                composable<Destination.AskForLocation> {
                     AskForLocationScreen().Content()
                 }
-                composable(route = Destination.EnterLocation.route) {
+                composable<Destination.EnterLocation> {
                     EnterLocationScreen().Content()
                 }
-                composable(route = Destination.ForecastList.getParametrizedRoute()) {
-                    ForecastListScreen().Content()
+                composable<Destination.ForecastList>(
+                        typeMap = mapOf(
+                                typeOf<ForecastListScreenArgs>() to CustomNavType.ForecastListArgs
+                        )
+                ) {
+                    val args = runCatching { it.toRoute<Destination.ForecastList>() }.getOrNull()?.args
+                    args?.let { ForecastListScreen(args).Content() }
                 }
-                composable(route = Destination.ForecastDetails.getParametrizedRoute()) {
+                composable<Destination.ForecastDetails> {
                     ForecastDetailsScreen().Content()
                 }
             }

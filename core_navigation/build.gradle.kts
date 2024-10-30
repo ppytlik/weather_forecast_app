@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.compose.compiler)
     id("kotlin-parcelize")}
 
 android {
@@ -35,6 +37,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.navigation)
+    implementation(libs.kotlinx.serialization)
 
     implementation(project(":lib_domain"))
 

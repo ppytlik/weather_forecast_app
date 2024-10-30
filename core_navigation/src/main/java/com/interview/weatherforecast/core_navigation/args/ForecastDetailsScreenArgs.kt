@@ -1,8 +1,8 @@
 package com.interview.weatherforecast.core_navigation.args
 
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class ForecastDetailsScreenArgs(
         val title: String? = null,
         val highestValue: String? = null,
