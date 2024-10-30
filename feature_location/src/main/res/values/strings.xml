@@ -11,4 +11,10 @@
     <string name="nicht_gewahrt">Nicht gewahrt</string>
     <string name="check_again">Check again</string>
     <string name="done">Done</string>
+    <string name="search_your_location_title">Search your location</string>
+    <string name="search_for_your_location_message">Search for your location int following text field and then select it from the list.</string>
+    <string name="welcome_to_the_weather_app">Welcome to the weather app!</string>
+    <string name="welcome_rationale">To be able to start, we need a location for which the weather information can be retrieved.</string>
+    <string name="enter_location">Enter location</string>
+    <string name="use_my_location">Use my location</string>
 </resources>

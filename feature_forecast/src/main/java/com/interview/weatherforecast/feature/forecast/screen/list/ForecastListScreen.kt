@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.interview.weatherforecast.core_navigation.Screen
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.feature.forecast.domain.usecase.AvailableForecast
+import com.interview.weatherforecast.lib.compose.ColorPalette
 import org.koin.androidx.compose.koinViewModel
 
 class ForecastListScreen(private val args: ForecastListScreenArgs) : Screen() {
@@ -56,7 +57,7 @@ private fun MainContent(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFF1C1C1C))
+            .background(ColorPalette.background)
             .padding(horizontal = 12.dp)
     ) {
         Text("Search your location")

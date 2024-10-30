@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":core_navigation"))
 
     implementation(project(":lib_domain"))
+    implementation(project(":lib_compose"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

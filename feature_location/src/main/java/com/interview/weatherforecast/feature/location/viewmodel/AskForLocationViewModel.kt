@@ -53,6 +53,7 @@ class AskForLocationViewModel(
 
         screenStateFlow.update {
             screenStateFlow.value.copy(
+                    hasLocationServiceAccess = fine && coarse,
                     hasFineLocationPermission = fine,
                     hasCoarseLocationPermission = coarse
             )
