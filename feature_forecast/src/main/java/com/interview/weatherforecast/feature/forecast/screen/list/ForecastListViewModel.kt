@@ -14,12 +14,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+private const val EMPTY_STRING = ""
+
 class ForecastListViewModel(
     private val moduleNavigator: ModuleNavigator,
     private val getAvailableForecastList: GetAvailableForecastList,
 ) : ViewModel() {
 
-    private val stateFlow: MutableStateFlow<ForecastListState> = MutableStateFlow(ForecastListState(locationName = ""))
+    private val stateFlow: MutableStateFlow<ForecastListState> = MutableStateFlow(ForecastListState(locationName = EMPTY_STRING))
 
     var args: ForecastListScreenArgs? = null
 
@@ -32,8 +34,7 @@ class ForecastListViewModel(
     fun loadData(args: ForecastListScreenArgs) {
         this.args = args
         viewModelScope.launch(Dispatchers.IO) {
-            val args = moduleNavigator.getNavigationArguments()?.getParcelable("ForecastListScreenArgs", ForecastListScreenArgs::class.java)
-            val locationName = args?.locationName
+            val locationName = args.locationName
 
             val (items, errorText) = when (val listResult = getAvailableForecastList()) {
                 is AvailableForecastListResult.Success -> listResult.data to null
