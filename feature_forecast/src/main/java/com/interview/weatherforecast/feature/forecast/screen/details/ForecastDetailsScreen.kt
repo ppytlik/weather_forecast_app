@@ -70,7 +70,7 @@ fun MainContent(
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Tomorrow", style = MaterialTheme.typography.h6.copy(color = Color.White))
+            Text(text = forecastDetailsScreenArgs.title, style = MaterialTheme.typography.h6.copy(color = Color.White))
         }
 
         Row(

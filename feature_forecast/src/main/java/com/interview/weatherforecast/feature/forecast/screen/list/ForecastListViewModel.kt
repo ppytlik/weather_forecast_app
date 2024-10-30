@@ -28,14 +28,16 @@ class ForecastListViewModel(
 
     fun onLocationButtonClick() = moduleNavigator.back()
 
-    fun onForecastItemClick(item:AvailableForecast) = item.forecastDetailsScreenArgs?.let { moduleNavigator.openForecastDetailsScreen(it) }
+    fun onForecastItemClick(item: AvailableForecast) = item.forecastDetailsScreenArgs?.let { moduleNavigator.openForecastDetailsScreen(it) }
 
     fun loadData(args: ForecastListScreenArgs) {
         this.args = args
         viewModelScope.launch(Dispatchers.IO) {
             val locationName = args.locationName
+            val latitude = args.latitude
+            val longitude = args.longitude
 
-            val (items, errorText) = when (val listResult = getAvailableForecastList()) {
+            val (items, errorText) = when (val listResult = getAvailableForecastList(latitude, longitude)) {
                 is AvailableForecastListResult.Success -> listResult.data to null
                 is AvailableForecastListResult.Error -> emptyList<AvailableForecast>() to listResult.message
             }

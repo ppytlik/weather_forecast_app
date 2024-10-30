@@ -59,7 +59,7 @@ private fun List<TimelineItem<DataValuesDaily>>.toForecastData(): List<ForecastR
             visibility = it.values.visibilityAvg,
             pressure = it.values.pressureSurfaceLevelAvg,
             sunrise = it.values.sunriseTime?.toJavaInstant(),
-            sunset = it.values.sunriseTime?.toJavaInstant(),
+            sunset = it.values.sunsetTime?.toJavaInstant(),
         )
     }
 }

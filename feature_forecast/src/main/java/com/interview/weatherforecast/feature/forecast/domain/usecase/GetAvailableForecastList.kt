@@ -9,32 +9,26 @@ import java.util.Locale
 class GetAvailableForecastList(
     private val forecastRepository: ForecastRepository,
     private val dateConverter: DateConverter,
-    private val locationProvider: ForecastLocationProvider = ForecastLocationProvider,
 ) {
+    suspend operator fun invoke(latitude: Float?, longitude: Float?): AvailableForecastListResult {
+        return if (latitude != null && longitude != null) {
+            when (val result = forecastRepository.getWeatherForecastForLocation(ForecastLocation(latitude.toDouble(), longitude.toDouble()))) {
+                is ForecastRepository.ForecastResult.Error -> AvailableForecastListResult.Error(result.message)
+                is ForecastRepository.ForecastResult.Success -> result.data.map {
+                    val displayForecastText = dateConverter.formatDate(it.instant)
+                    val displayDate = dateConverter.formatFullDate(it.instant)
+                    AvailableForecast(
+                        displayForecastText = displayForecastText,
+                        displayDate = displayDate,
+                        forecastDetailsScreenArgs = it.toForecastDetailsScreenArgs(dateConverter, displayForecastText)
 
-    fun interface ForecastLocationProvider {
-        operator fun invoke(): ForecastLocation
-
-        companion object : ForecastLocationProvider {
-            override fun invoke() = ForecastLocation(53.42894, 14.55302)
-        }
-    }
-
-    suspend operator fun invoke(): AvailableForecastListResult {
-        return when (val result = forecastRepository.getWeatherForecastForLocation(locationProvider())) {
-            is ForecastRepository.ForecastResult.Error -> AvailableForecastListResult.Error(result.message)
-            is ForecastRepository.ForecastResult.Success -> result.data.map {
-                val displayForecastText = dateConverter.formatDate(it.instant)
-                val displayDate = dateConverter.formatFullDate(it.instant)
-                AvailableForecast(
-                    displayForecastText = displayForecastText,
-                    displayDate = displayDate,
-                    forecastDetailsScreenArgs = it.toForecastDetailsScreenArgs(dateConverter, displayForecastText)
-
-                )
-            }.let { items ->
-                AvailableForecastListResult.Success(data = items)
+                    )
+                }.let { items ->
+                    AvailableForecastListResult.Success(data = items)
+                }
             }
+        } else {
+            AvailableForecastListResult.Error("Missing location")
         }
     }
 }
