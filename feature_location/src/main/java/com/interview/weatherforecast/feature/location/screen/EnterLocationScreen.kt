@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,7 +29,6 @@ import com.interview.weatherforecast.feature.location.screen.component.SubHeader
 import com.interview.weatherforecast.feature.location.screen.component.VerticalSpacer
 import com.interview.weatherforecast.feature.location.viewmodel.EnterLocationViewModel
 import com.interview.weatherforecast.lib.compose.ColorPalette
-import com.interview.weatherforecast.lib.compose.ThemeSize
 import org.koin.androidx.compose.koinViewModel
 
 class EnterLocationScreen : Screen() {
@@ -49,6 +49,7 @@ private fun MainContent(viewModel: EnterLocationViewModel) {
                     .background(ColorPalette.background)
                     .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
+        val context = LocalContext.current
         val fieldValue = remember { mutableStateOf("") }
 
         Header(stringResource(R.string.search_your_location_title))
@@ -78,7 +79,7 @@ private fun MainContent(viewModel: EnterLocationViewModel) {
                         backgroundColor = ColorPalette.buttonFillPrimary,
                         contentColor = ColorPalette.buttonTextPrimary
                 ),
-                onClick = { viewModel.onDoneClick(fieldValue.value) },
+                onClick = { viewModel.onDoneClick(context, fieldValue.value) },
                 content = { Text(stringResource(R.string.done)) }
         )
     }
