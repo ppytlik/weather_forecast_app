@@ -13,12 +13,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+private const val EMPTY_STRING = ""
+
 class ForecastListViewModel(
     private val moduleNavigator: ModuleNavigator,
     private val getAvailableForecastList: GetAvailableForecastList,
 ) : ViewModel() {
 
-    private val stateFlow: MutableStateFlow<ForecastListState> = MutableStateFlow(ForecastListState(locationName = ""))
+    private val stateFlow: MutableStateFlow<ForecastListState> = MutableStateFlow(ForecastListState(locationName = EMPTY_STRING))
 
     var args: ForecastListScreenArgs? = null
 

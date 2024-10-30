@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="use_my_location_title">Use my location</string>
+    <string name="grant_location_authorisations">Grant location authorisations</string>
+    <string name="to_be_able_to_access_your_location_the_app_requires_authorisation_to_do_so">To be able to access your location, the app requires authorisation to do so.</string>
+    <string name="your_phone_must_also_support_this">Your phone must also support this.</string>
+    <string name="location_service">Location service</string>
+    <string name="ausgeschalten">Ausgeschalten</string>
+    <string name="okay">Okay</string>
+    <string name="location_permission">Location permission</string>
+    <string name="nicht_gewahrt">Nicht gewahrt</string>
+    <string name="check_again">Check again</string>
+    <string name="done">Done</string>
+</resources>
