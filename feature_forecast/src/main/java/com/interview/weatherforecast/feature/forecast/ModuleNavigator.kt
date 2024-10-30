@@ -7,7 +7,7 @@ import com.interview.weatherforecast.core_navigation.navigation.AppNavigator
 class ModuleNavigator(
         private val appNavigator: AppNavigator
 ) {
-    fun openForecastDetailsScreen(args: ForecastDetailsScreenArgs) = appNavigator.openScreen(Destination.ForecastDetails)
+    fun openForecastDetailsScreen(args: ForecastDetailsScreenArgs) = appNavigator.openScreen(Destination.ForecastDetails(args))
 
     fun getNavigationArguments() = appNavigator.getArguments()
 

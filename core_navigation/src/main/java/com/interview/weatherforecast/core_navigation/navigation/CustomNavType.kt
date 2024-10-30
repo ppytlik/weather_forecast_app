@@ -3,6 +3,7 @@ package com.interview.weatherforecast.core_navigation.navigation
 import android.net.Uri
 import android.os.Bundle
 import androidx.navigation.NavType
+import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import kotlinx.serialization.json.Json
 
@@ -26,5 +27,26 @@ object CustomNavType {
         override fun put(bundle: Bundle, key: String, value: ForecastListScreenArgs) {
             bundle.putString(key, Json.encodeToString(value = value, serializer = ForecastListScreenArgs.serializer()))
         }
+    }
+
+    val ForecastDetailsArgs = object : NavType<ForecastDetailsScreenArgs>(
+            isNullableAllowed = true
+    ) {
+        override fun serializeAsValue(value: ForecastDetailsScreenArgs): String {
+            return Uri.encode(Json.encodeToString(value = value, serializer = ForecastDetailsScreenArgs.serializer()))
+        }
+
+        override fun parseValue(value: String): ForecastDetailsScreenArgs {
+            return Json.decodeFromString(Uri.decode(value))
+        }
+
+        override fun get(bundle: Bundle, key: String): ForecastDetailsScreenArgs? {
+            return Json.decodeFromString(bundle.getString(key) ?: return null)
+        }
+
+        override fun put(bundle: Bundle, key: String, value: ForecastDetailsScreenArgs) {
+            bundle.putString(key, Json.encodeToString(value = value, serializer = ForecastDetailsScreenArgs.serializer()))
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.interview.weatherforecast.core_navigation.destination
 
+import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import kotlinx.serialization.Serializable
 
@@ -19,5 +20,5 @@ sealed class Destination() {
     data class ForecastList(val args: ForecastListScreenArgs) : Destination()
 
     @Serializable
-    data object ForecastDetails : Destination()
+    data class ForecastDetails(val args: ForecastDetailsScreenArgs) : Destination()
 }

@@ -17,4 +17,4 @@ data class ForecastDetailsScreenArgs(
         val locationName: String? = null,
         val sunriseTime: String? = null,
         val sunsetTime: String? = null
-) : ScreenArgs
+)

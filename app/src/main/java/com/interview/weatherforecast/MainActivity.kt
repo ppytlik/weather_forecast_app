@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.interview.weatherforecast.core_navigation.args.ForecastDetailsScreenArgs
 import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.core_navigation.destination.Destination
 import com.interview.weatherforecast.core_navigation.navigation.AppNavigator
@@ -53,11 +54,16 @@ class MainActivity : AppCompatActivity() {
                                 typeOf<ForecastListScreenArgs>() to CustomNavType.ForecastListArgs
                         )
                 ) {
-                    val args = runCatching { it.toRoute<Destination.ForecastList>() }.getOrNull()?.args
+                    val args = runCatching { it.toRoute<Destination.ForecastList>().args }.getOrNull()
                     args?.let { ForecastListScreen(args).Content() }
                 }
-                composable<Destination.ForecastDetails> {
-                    ForecastDetailsScreen().Content()
+                composable<Destination.ForecastDetails>(
+                        typeMap = mapOf(
+                                typeOf<ForecastDetailsScreenArgs>() to CustomNavType.ForecastDetailsArgs
+                        )
+                ) {
+                    val args = runCatching { it.toRoute<Destination.ForecastDetails>().args }.getOrNull()
+                    args?.let { ForecastDetailsScreen(args).Content() }
                 }
             }
         }
