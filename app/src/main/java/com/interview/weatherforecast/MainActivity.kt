@@ -13,8 +13,8 @@ import com.interview.weatherforecast.core_navigation.args.ForecastListScreenArgs
 import com.interview.weatherforecast.core_navigation.destination.Destination
 import com.interview.weatherforecast.core_navigation.navigation.AppNavigator
 import com.interview.weatherforecast.core_navigation.navigation.CustomNavType
-import com.interview.weatherforecast.feature.forecast.screen.ForecastDetailsScreen
-import com.interview.weatherforecast.feature.forecast.screen.ForecastListScreen
+import com.interview.weatherforecast.feature.forecast.screen.details.ForecastDetailsScreen
+import com.interview.weatherforecast.feature.forecast.screen.list.ForecastListScreen
 import com.interview.weatherforecast.feature.location.screen.AskForLocationScreen
 import com.interview.weatherforecast.feature.location.screen.EnterLocationScreen
 import com.interview.weatherforecast.feature.location.screen.WelcomeScreen

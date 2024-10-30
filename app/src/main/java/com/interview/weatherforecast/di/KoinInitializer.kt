@@ -5,6 +5,6 @@ import com.interview.weatherforecast.feature.location.featureLocationModule
 
 internal object KoinInitializer {
     val modules = listOf(
-            appModule, featureLocationModule, featureForecastModule
-    )
+        appModule, featureLocationModule
+    ).plus(featureForecastModule)
 }

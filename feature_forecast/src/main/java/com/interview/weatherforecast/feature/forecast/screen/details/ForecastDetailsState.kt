@@ -1,4 +1,4 @@
-package com.interview.weatherforecast.feature.forecast.state
+package com.interview.weatherforecast.feature.forecast.screen.details
 
 import com.interview.wheatherforecast.lib.domain.model.ForecastData
 

@@ -60,6 +60,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.datastore.preferences)
 
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+
     debugImplementation(files("libs/Shared-debug.aar"))
     releaseImplementation(files("libs/Shared-release.aar"))
 

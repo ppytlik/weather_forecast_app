@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -35,6 +34,10 @@ android {
     buildFeatures {
         compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
 }
 
 dependencies {
@@ -42,6 +45,8 @@ dependencies {
     implementation(project(":core_navigation"))
 
     implementation(project(":lib_domain"))
+
+    implementation(libs.kotlinx.datetime)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,12 +60,16 @@ dependencies {
     implementation(libs.androidx.compose.material)
 
     implementation(libs.androidx.compose.navigation)
-    implementation(libs.kotlinx.serialization)
-
-    implementation(libs.koin)
+    implementation(libs.koin.core)
     implementation(libs.koin.compose)
+
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.viewmodel)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
 }

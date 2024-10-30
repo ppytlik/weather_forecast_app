@@ -51,9 +51,10 @@ dependencies {
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.material)
-
     implementation(libs.androidx.compose.navigation)
-    implementation(libs.koin)
+
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
     implementation(libs.koin.compose)
 
     testImplementation(libs.junit)
